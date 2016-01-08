@@ -2273,6 +2273,9 @@ L.Map = L.Class.extend({
 		    viewBounds = new L.Bounds(centerPoint.subtract(viewHalf), centerPoint.add(viewHalf)),
 		    offset = this._getBoundsOffset(viewBounds, bounds, zoom);
 
+    if(offset.round().equals([0,0])) {
+      return center;
+    }
 		return this.unproject(centerPoint.add(offset), zoom);
 	},
 
